@@ -1,0 +1,73 @@
+
+*{
+  box-sizing: border-box;
+}
+
+html,
+body{
+  background-color: #FEDCC8;
+}
+
+.parallax {
+  perspective: 100px;
+  height: 100vh;
+  overflow-x: hidden;
+  overflow-y: auto;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.layer{
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0; 
+  width: 100vw;
+  height: 100vh;
+  
+  img{
+    display: block;
+    position: absolute;
+    background-size: cover;
+    width: 100vw;
+    height: 100vh;
+    bottom: 0;
+    left: 0;
+  }
+}
+
+.layer h1{
+    text-align: center;
+    font-size: 22vh;
+    margin-top: 40vh;
+    color: rgba(0, 0, 0, 0.60);
+/*    -webkit-text-stroke-width: 2px;
+    -webkit-text-stroke-color: black;*/
+    font-family: 'Roboto Condensed', sans-serif;
+}
+
+
+
+.custom{
+  background: whitesmoke;
+  display: block;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  height: 3200px;
+  z-index: 2;
+}
+
+$layers: 5;
+
+@for $i from 1 through $layers {
+  $y: ($layers - $i) / 2;
+  .layer_#{$i}{
+     transform: translateZ(-100 * $y#{px}) scale($y + 1);
+  }
+}
